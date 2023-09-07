@@ -1,0 +1,64 @@
+problem link : https://vjudge.net/contest/579483#problem/E
+------------------------------------------------------------------
+problem solution :
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+bool areSimilarCharacters(char x, char y) {
+  // Check if the characters are the same.
+  if (x == y) {
+    return true;
+  }
+
+  // Check if one of the characters is 1 and the other is l.
+  if ((x == '1' && y == 'l') || (x == 'l' && y == '1')) {
+    return true;
+  }
+
+  // Check if one of the characters is 0 and the other is o.
+  if ((x == '0' && y == 'o') || (x == 'o' && y == '0')) {
+    return true;
+  }
+
+  // Otherwise, the characters are not similar.
+  return false;
+}
+
+bool areSimilarStrings(string S, string T) {
+  // Check if the strings have the same length.
+  if (S.length() != T.length()) {
+    return false;
+  }
+
+  // Iterate over the strings and compare each character.
+  for (int i = 0; i < S.length(); i++) {
+    if (!areSimilarCharacters(S[i], T[i])) {
+      return false;
+    }
+  }
+
+  // The strings are similar.
+  return true;
+}
+
+int main() {
+  int n;
+  string S, T;
+  cin >>n>> S >> T;
+
+  // Check if the strings are similar.
+  if (areSimilarStrings(S, T)) {
+    cout << "Yes" << endl;
+  } else {
+    cout << "No" << endl;
+  }
+
+  return 0;
+}
+
+	
+  return 0;
+}

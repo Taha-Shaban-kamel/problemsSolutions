@@ -1,0 +1,42 @@
+problem link : https://vjudge.net/contest/579483#status/taha_shaban/C/0/
+------------------------------------------------------------------
+problem solution :
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+int main() {
+  vector<int> A ;
+  vector<int> number;
+  	int  inputSize;
+  	cin>>inputSize;
+  	while(inputSize){
+  		int input;
+  		cin>>input;
+  		A.push_back(input);
+  		inputSize--;		
+	}
+	int min_value = A[0] , max_value =A[0];
+  // Find the lost integer.
+   for (int i = 1; i < A.size(); i++) {
+    	min_value = min(min_value, A[i]);
+    	max_value = max(max_value, A[i]);
+ 	}
+ 
+ 	 for (int i =   min_value; i <=max_value; i++) {
+    	number.push_back(i);	
+ 	}
+ 	 // Print the lost integer.
+	 for (int i = 0; i <number.size(); i++) {
+  		if(!count(A.begin(),A.end(),number[i]))
+		{			
+			cout<<number[i];
+			return 0;
+		}
+	
+ 	}
+	
+  return 0;
+}
